@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>HisabKitab</title>
+  </head>
+  <style>
+    .fal{
+        font-size: large;
+        text-decoration: none;
+        color:rgb(197, 197, 197);
+    }
+    .fal:hover{
+      text-decoration: none;
+      color:white;
+    }
+</style>
+  <body>
+    <div class="container px-5 mt-2">
+        <div>
+            <div style="font-size:30px;"><i><b>Hisab<span style="color:orange;">Kitab</span>    </b></i></div>
+            <small>Taking invoice management to the next level</small>        
+        </div>
+        <hr>
+    </div>
+    <div class="container px-5">
+        <br>
+    <h4> Your Search Results</h4>
+    <br>
+    <hr>
+        <% if(invoices.length>0){ %>
+            <div class="container m-2" style="border:1px solid grey;">
+                <div class="row text-start no-gutter m-1">
+                    <div class="col-3" style="font-weight: 600;border:2px solid grey;">Invoice No</div>
+                    <div class="col-3" style="font-weight: 600;border:2px solid grey;"> Name</div>
+                    <div class="col-2" style="font-weight: 600;border:2px solid grey;">Date</div>
+                    <div class="col-3" style="font-weight: 600;border:2px solid grey;">Amount</div>
+                    <div class="col-1" style="font-weight: 600;border:2px solid grey;">Status</div>
+                </div>
+                <% var i=0 %>
+                <div style="max-height:600px;overflow-y:scroll;">
+              <% invoices.forEach(function(inv){ %>
+                    <% if(i%2==0){ %>
+                        <div class="row text-start no-gutter m-1" style="background-color: rgb(223, 223, 223);" >
+                            <div class="col-3" style="border-right:1px solid black;" ><a target="_blank" href="/invoice/<%= inv._id %>"><%= inv.ref_no %></a></div>
+                            <div class="col-3" style="border-right:1px solid black;"><%= inv.first_name %> <%= inv.last_name %></div>
+                            <div class="col-2" style="border-right:1px solid black;"><%= inv.charge_date %></div>
+                            <div class="col-3" style="border-right:1px solid black;">Rs.<%= inv.booking_charge_amount %></div>
+                            <div class="col-1"><%= inv.taxable_status.substring(0,1) %></div>
+                            <hr class="m-0">
+                            <% i=i+1 %>
+                        </div>
+                    <% }else{%>
+                        <div class="row text-start no-gutter m-1" >
+                            <div class="col-3" style="border-right:1px solid black;" ><a target="_blank" href="/invoice/<%= inv._id %>"><%= inv.ref_no %></a></div>
+                            <div class="col-3" style="border-right:1px solid black;"><%= inv.first_name %> <%= inv.last_name %></div>
+                            <div class="col-2" style="border-right:1px solid black;"><%= inv.charge_date %></div>
+                            <div class="col-3" style="border-right:1px solid black;">Rs.<%= inv.booking_charge_amount %></div>
+                            <div class="col-1"><%= inv.taxable_status.substring(0,1) %></div>
+                            <hr class="m-0">
+                            <% i=i+1 %>
+                        </div>
+                    <% } %>
+                    <% }) %>
+                </div> 
+            </div>
+        <% }else{ %>
+            <div class="text-center"> No Such Invoice !</div>
+        <% } %>
+    </div>
+
+
+
+    <br>
+    <br>
+    <div class="container-fluid" style="color:white;background-color:black;">
+        <br>
+        <br>
+        <div class="row text-center text-lg-left">
+            <div class="col-lg-3">
+                <h1 >Hisab<span style="color:orange">Kitab</span></h1>
+                <div class="text-start">
+                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                    <br>
+                    <br>
+                    <hr>
+                    <i class="fab fa-instagram fa-3x"></i>
+                    <i class="fab fa-twitter fa-3x"></i>
+                    <i class="fab fa-facebook fa-3x"></i>
+                </div>
+            </div>
+            
+            <div class="col-lg-2">
+                <h1 class="fheading">Links<span style="color:orange">.</span></h1>
+                <br>
+                <a href="/" class="fal">HOME</a> 
+                <br>
+                <br>
+                <a href="#search" class="fal">SEARCH</a> 
+                <br>
+                 
+            </div>
+            <div class="col-lg-3">
+                <h1 class="fheading">Information<span style="color:orange">.</span></h1>
+                <br>
+                <a href="/" class="fal">Privacy Policy</a> 
+                <br>
+                <br>
+                <a href="/" class="fal">Terms&Conditions</a> 
+                <br>
+            </div>
+               <div class="col-lg-4">
+                   <h1 class="fheading">Have a Question<span style="color:orange">?</span></h1>
+                   <div><script src="https://cdn.lordicon.com//libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+                    <lord-icon
+                    src="https://cdn.lordicon.com//zzcjjxew.json"
+                    trigger="hover"
+                    colors="primary:#ffffff,secondary:#eeca66"
+                    style="width:32px;height:32px">
+                </lord-icon> <br>204,Oracle Commercials<br>BKC,Mumbai.<br>India.
+            </div>
+            <br>
+            <div><i class="fas fa-phone-alt"></i> +91 9648271574</div>
+            <br>
+            <div><script src="https://cdn.lordicon.com//libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+                <lord-icon
+                src="https://cdn.lordicon.com//rhvddzym.json"
+                trigger="loop"
+                colors="primary:#ffffff,secondary:#08a88a"
+                style="width:32px;height:32px">
+            </lord-icon>hisabkitab@info.in</div>   
+        </div>
+    </div>
+    
+    <br>
+    <br>
+    <hr style="color:white">
+    <br>
+    <div class="text-muted text-center"> HisabKitab.Copyright ©2021 All rights reserved |</div>  
+    
+    
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  </body>
+</html>

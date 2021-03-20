@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <br>
+      <br>
+      <br>
+    <div class="container p-2" style="border: 2px solid grey;border-radius:10px;">
+      <div class="container">
+        <div class="d-flex flex-row-reverse">
+          <div class="d-flex flex-column py-4 px-3">
+            <p><b>Invoice Number</b>:<%= inv.ref_no %></p>
+            <p> <b>Invoice Date:</b><%= inv.charge_date %></p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between px-3">
+          <div class="d-flex flex-column">
+            <p> <b>PNR No:</b><%= inv.pnr %></p>
+            <p> <b>Passenger Name:</b><%= inv.first_name %></p>
+            <p><b> Passenger Address:</b></p>
+          </div>
+          <div class="d-flex flex-column">
+            <p><b>Flight No:</b><%= inv.flight_number %></p>
+          </div>
+          <div class="d-flex flex-column">
+            <p> <b>Flight Date:</b><%= inv.departure_date %></p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between px-3">
+          <div class="d-flex flex-column">
+            <p><b>GSTIN of Customer:</b><%= inv.gst_number %></p>
+            <p><b>GSTIN Customer Name:</b><%= inv.gst_holder %></p>
+          </div>
+          <div class="d-flex flex-column">
+            <p><b>Flight From:</b><%= inv.from_airport %></p>
+            <p><b>Place of supply:</b><%= inv.booking_location_code %></p>
+          </div>
+          <div class="d-flex flex-column">
+            <p><b>Flight To:</b><%= inv.to_airport %></p>
+          </div>
+        </div>
+      </div>
+      <div class="container px-3">
+        <div class="d-flex justify-content-end">
+          <div class="d-flex flex-column">
+            <p><b>Amount in INR</b></p>
+          </div>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">SAC Code</th>
+              <th scope="col">Taxable Value/Exempt</th>
+              <th scope="col">Non Taxable Value</th>
+              <th scope="col">Total</th>
+              <th scope="col">Total Invoice Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">All Ticket Charges</th>
+              <td><%= inv.all_charge_codes %></td>
+              <td><%= inv.booking_charge_amount %></td>
+              <td>-</td>
+              <td><%= inv.booking_charge_amount %></td>
+              <td><%= inv.booking_charge_amount %></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row" colspan="2">Grand Total</th>
+              <td><%= inv.booking_charge_amount %></td>
+              <td>0.00</td>
+              <td><%= inv.booking_charge_amount %></td>
+              <td><%= inv.booking_charge_amount %></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="d-flex justify-content-between px-4 mx-5">
+        <div class="d-flex flex-column">
+          <p>
+            Whether Tax is payable on Reverse Charge : NO <br />
+            Note : <br />
+            (a) Air Ticket charges : It includes allthe charges related to air
+            travel. <br />
+            (b) Ancillary charges : It includes ancillary services related to air
+            <travel class="br"></travel> (c) Airport Taxes-Pass Through :These are
+            the charges collected on behalf of airport authority(PSF,ADF,UDF
+            etc).AirAsia is a Pure Agent for these charges <br />
+            (d) Insurance-Pass through : Insurance charges are collected on behalf
+            of the Insurance provider.AirAsia is a Pure Agent for these charges
+            <br />
+            (e) All amounts have been rounded off to the nearest rupee <br />
+            (f) Cess Includes Kerala Flood Cess (KFC)
+          </p>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="text-center">PRINT PDF:</div>
+    <div class="d-flex justify-content-center p-1">
+      <input
+          type="submit"
+          value="Save as PDF"
+          id="btn"
+          class="btn btn-outline-dark"
+          onclick="none(); window.print(); "
+        />
+      </div>
+      </div>
+    
+
+    <script>
+      function none() {
+        document.getElementById("btn").style.display = "none";
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
