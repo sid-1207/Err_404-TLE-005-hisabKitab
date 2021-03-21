@@ -30,7 +30,7 @@ app.get('/',function(req,res){
 //     fs.createReadStream('data.csv')
 //   .pipe(csv())
 //   .on('data', (row) => {
-//     row['booking_charge_amount']>=0?Invoice.create(row,function(err,entry){
+//     row['booking_charge_amount']>=0 && row['ref_no'].length >3?Invoice.create(row,function(err,entry){
 //         if(err){
 //             console.log(err);
 //         }
