@@ -2,6 +2,7 @@ var mongoose =require('mongoose');
 
 var invoiceSchema=new mongoose.Schema({
   id: String,
+  bill:[],
   pnr: String,
   is_split_pnr: String,
   parent_pnr: String,
